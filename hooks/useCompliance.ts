@@ -34,6 +34,8 @@ export function useCompliance(complianceId: string | null, address: string | nul
         record,
       };
     },
+    // `compliance` is a module-level singleton (not a prop/state), so it is
+    // intentionally omitted from the dependency array.
     [complianceId, address, network],
     Boolean(complianceId && address),
   );
@@ -90,6 +92,8 @@ export function useComplianceOverview(complianceId: string | null) {
         jurisdictions,
       };
     },
+    // `compliance` is a module-level singleton (not a prop/state), so it is
+    // intentionally omitted from the dependency array.
     [complianceId, network],
     Boolean(complianceId),
   );
@@ -107,6 +111,8 @@ export function useAllowlist(complianceId: string | null) {
       );
       return records.filter((r): r is KycRecord => r !== null);
     },
+    // `compliance` is a module-level singleton (not a prop/state), so it is
+    // intentionally omitted from the dependency array.
     [complianceId, network],
     Boolean(complianceId),
   );
